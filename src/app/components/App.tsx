@@ -65,9 +65,19 @@ export default function App() {
 	const [onboardingIsOpen, setOnboardingIsOpen] = useState<boolean | undefined>(undefined);
 	const isLocked = (isLockedRaw || onboardingIsOpen) ?? true;
 	const loaded = loadingRes != null && localeMessages != null;
+	async function importSave() {
+		const data = require("../../../initial.json");
+		for (const [key, value] of Object.entries(data)) {
+			await storage.set(key, value);
+		}
+
+		location.reload();
+	}
 	useEffect(() => {
 		if (loaded && onboardingIsOpen == undefined) {
-			setOnboardingIsOpen(widgetManager.widgets.length == 0);
+			if (widgetManager.widgets.length == 0) {
+				importSave();
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loaded]);
