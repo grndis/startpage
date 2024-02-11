@@ -285,19 +285,25 @@ a, .link {
 }
 
 
+.react-grid-item {
+	height: auto !important;
+}
+
 .iconbar li .icon {
 	width: 90px;
 	height: 90px;
 }
-.react-grid-item.widget.widget-links {
-	height: 75% !important;
-}
+
 .widget-grid {
 	padding: 0 !important;
 }
 .iconbar {
 	width: 800px;
 	margin: auto; 
+}
+
+.grid-full-page{
+	min-width: none !important;
 }
 
 @media screen and (max-width: 1024px) {
