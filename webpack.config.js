@@ -5,7 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerPlugin = require("fork-ts-checker-webpack-plugin");
-const {GitRevisionPlugin} = require("git-revision-webpack-plugin");
+const { GitRevisionPlugin } = require("git-revision-webpack-plugin");
 const gitRevisionPlugin = new GitRevisionPlugin({
 	lightweightTags: true,
 });
@@ -53,7 +53,7 @@ module.exports = {
 		}),
 		new CopyPlugin({
 			patterns: [
-				{ from: "src/webext/", to: path.resolve(__dirname, "dist/webext/"), globOptions: { ignore: ["**/webext/manifest.*"] }  },
+				{ from: "src/webext/", to: path.resolve(__dirname, "dist/webext/"), globOptions: { ignore: ["**/webext/manifest.*"] } },
 				{ from: "src/app/public/", to: dest },
 				{ from: "node_modules/webextension-polyfill/dist/browser-polyfill.min.js", to: dest },
 				{ from: `src/webext/manifest.${manifestTarget}.json`, to: path.resolve(__dirname, "dist/webext/manifest.json") },
@@ -67,7 +67,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			filename: "index.html",
-			title: "Renewed Tab Web",
+			title: "New Tab",
 			template: "src/app/templates/index.ejs",
 			hash: true,
 			templateParameters: {
