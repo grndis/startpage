@@ -59,11 +59,11 @@ export default function App() {
 	const [createIsOpen, setCreateOpen] = useState(false);
 	const [settingsIsOpen, setSettingsOpen] = useState(false);
 	const [widgetsHidden, setWidgetsHidden] = useState(false);
-	const [isLockedRaw, setIsLocked] = useStorage<boolean>("locked", false);
+	const [isLockedRaw, setIsLocked] = useStorage<boolean>("locked", true);
 	const [rawGridSettings, setGridSettings] = useStorage<WidgetGridSettings>(
 		"grid_settings", { ...defaultGridSettings });
 	const [onboardingIsOpen, setOnboardingIsOpen] = useState<boolean | undefined>(undefined);
-	const isLocked = (isLockedRaw || onboardingIsOpen) ?? false;
+	const isLocked = (isLockedRaw) ?? true;
 	const loaded = loadingRes != null && localeMessages != null;
 	async function importSave() {
 		const data = require("../../../initial.json");
