@@ -63,7 +63,7 @@ export default function App() {
 	const [rawGridSettings, setGridSettings] = useStorage<WidgetGridSettings>(
 		"grid_settings", { ...defaultGridSettings });
 	const [onboardingIsOpen, setOnboardingIsOpen] = useState<boolean | undefined>(undefined);
-	const isLocked = (isLockedRaw || onboardingIsOpen) ?? true;
+	const isLocked = (isLockedRaw || onboardingIsOpen) ?? false;
 	const loaded = loadingRes != null && localeMessages != null;
 	async function importSave() {
 		const data = require("../../../initial.json");
