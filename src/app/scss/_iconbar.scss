@@ -10,7 +10,7 @@
 	height: 100%;
 	box-sizing: border-box;
 	overflow: hidden auto;
-	width: 800px;
+	max-width: 800px;
 	margin: auto; 
 	li {
 		display: block;
@@ -31,7 +31,6 @@
 
 		.title {
 			display: block;
-			margin: 10px 0 0 0;
 			overflow-wrap: break-word;
 
 			@include line-clamp(2);
@@ -70,15 +69,9 @@
 	}
 }
 
-@media screen and (max-width: 1024px) {
-	.iconbar {
-		width: 100%; 
-	}
-}
 
 @media screen and (max-width: 768px) {
 	.iconbar {
-		width: 100%; 
 		li {
 			.icon {
 				width: 80px;
@@ -90,7 +83,6 @@
 
 @media screen and (max-width: 384px) {
 	.iconbar {
-		width: 100%; 
 		li {
 			.icon {
 				width: 75px;
