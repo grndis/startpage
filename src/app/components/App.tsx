@@ -8,7 +8,7 @@ import { usePromise, useStorage } from "app/hooks";
 import { defineMessage, defineMessages, IntlProvider, useIntl } from "react-intl";
 import { getTranslation, detectUserLocale } from "app/locale";
 import { applyTheme, ThemeConfig } from "./settings/ThemeSettings";
-import ReviewRequester from "./ReviewRequester";
+// import ReviewRequester from "./ReviewRequester";
 import { storage } from "app/storage";
 import * as Sentry from "@sentry/react";
 import Onboarding from "./onboarding";
@@ -126,7 +126,7 @@ export default function App() {
 							onClose={() => setOnboardingIsOpen(false)}
 							locale={locale ?? "en"} setLocale={setLocale}
 							manager={widgetManager} />)}
-					<ReviewRequester />
+					{/* <ReviewRequester /> */}
 
 					{isLocked && !onboardingIsOpen && (
 						<Button id="unlock-widgets" onClick={() => setIsLocked(false)}
