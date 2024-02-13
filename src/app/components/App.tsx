@@ -131,7 +131,7 @@ export default function App() {
 					{isLocked && !onboardingIsOpen && (
 						<Button id="unlock-widgets" onClick={() => setIsLocked(false)}
 							tabIndex={0} variant={ButtonVariant.None}
-							className="text-shadow" icon="fas fa-pen"
+							className="text-shadow" icon="fas fa-ellipsis-h"
 							title={messages.unlockWidgets} />)}
 
 					{!isLocked && (
