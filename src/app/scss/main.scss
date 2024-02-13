@@ -284,30 +284,6 @@ a, .link {
 	}
 }
 
-
 .react-grid-item {
 	height: auto !important;
-}
-
-.iconbar li .icon {
-	width: 90px;
-	height: 90px;
-}
-
-.widget-grid {
-	padding: 0 !important;
-}
-.iconbar {
-	width: 800px;
-	margin: auto; 
-}
-
-@media screen and (max-width: 1024px) {
-	.iconbar {
-		width: 100%; 
-	}
-	.iconbar li .icon {
-	width: 60px;
-	height: 60px;
-	}
 }

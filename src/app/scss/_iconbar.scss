@@ -7,11 +7,11 @@
 	list-style: none;
 	gap: 10px;
 	padding: 5px;
-	margin: 0;
 	height: 100%;
 	box-sizing: border-box;
 	overflow: hidden auto;
-
+	width: 800px;
+	margin: auto; 
 	li {
 		display: block;
 		text-align: center;
@@ -21,8 +21,8 @@
 			margin: 0 auto;
 			display: block;
 			border-radius: 0.25rem;
-			width: 50px;
-			height: 50px;
+			width: 90px;
+			height: 90px;
 			font-size: 50px;
 			text-align: center;
 			object-fit: contain;
@@ -41,7 +41,6 @@
 			display: inline-block;
 			color: #eee;
 			transition: transform 200ms ease;
-			width: 90px;
 		}
 
 		&:not(.section) a:hover {
@@ -66,6 +65,36 @@
 
 			&:first-child {
 				padding-top: 0.8rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.iconbar {
+		width: 100%; 
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.iconbar {
+		width: 100%; 
+		li {
+			.icon {
+				width: 80px;
+				height: 80px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 384px) {
+	.iconbar {
+		width: 100%; 
+		li {
+			.icon {
+				width: 75px;
+				height: 75px;
 			}
 		}
 	}
