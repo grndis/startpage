@@ -154,7 +154,7 @@ if (typeof browser === 'undefined' && typeof navigator !== "undefined" &&
 
 
 export const storage : IStorage =
-	(typeof browser !== 'undefined') ? new WebExtStorage(browser.storage.local) : new LocalStorage();
+	(typeof browser !== 'undefined' && browser.storage && browser.storage.local) ? new WebExtStorage(browser.storage.local) : new LocalStorage();
 
 export const largeStorage : IStorage = new DelegateStorage(storage, "large-");
 

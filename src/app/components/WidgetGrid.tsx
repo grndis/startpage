@@ -159,7 +159,7 @@ export default function WidgetGrid(props: WidgetGridProps) {
 	};
 
 	const gridStyle: CSSProperties = props.fullPage
-		? { minWidth: Math.ceil(gridWidth / 2), width: "100%", height: "100%" }
+		? { width: "100%", height: "100%" }
 		: { width: Math.ceil(gridWidth / 2) * 2 };
 
 	return (

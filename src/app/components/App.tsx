@@ -8,7 +8,7 @@ import { usePromise, useStorage } from "app/hooks";
 import { defineMessage, defineMessages, IntlProvider, useIntl } from "react-intl";
 import { getTranslation, detectUserLocale } from "app/locale";
 import { applyTheme, ThemeConfig } from "./settings/ThemeSettings";
-import ReviewRequester from "./ReviewRequester";
+// import ReviewRequester from "./ReviewRequester";
 import { storage } from "app/storage";
 import * as Sentry from "@sentry/react";
 import Onboarding from "./onboarding";
@@ -59,15 +59,25 @@ export default function App() {
 	const [createIsOpen, setCreateOpen] = useState(false);
 	const [settingsIsOpen, setSettingsOpen] = useState(false);
 	const [widgetsHidden, setWidgetsHidden] = useState(false);
-	const [isLockedRaw, setIsLocked] = useStorage<boolean>("locked", false);
+	const [isLockedRaw, setIsLocked] = useStorage<boolean>("locked", true);
 	const [rawGridSettings, setGridSettings] = useStorage<WidgetGridSettings>(
 		"grid_settings", { ...defaultGridSettings });
 	const [onboardingIsOpen, setOnboardingIsOpen] = useState<boolean | undefined>(undefined);
-	const isLocked = (isLockedRaw || onboardingIsOpen) ?? true;
+	const isLocked = (isLockedRaw) ?? true;
 	const loaded = loadingRes != null && localeMessages != null;
+	async function importSave() {
+		const data = require("../../../initial.json");
+		for (const [key, value] of Object.entries(data)) {
+			await storage.set(key, value);
+		}
+
+		location.reload();
+	}
 	useEffect(() => {
 		if (loaded && onboardingIsOpen == undefined) {
-			setOnboardingIsOpen(widgetManager.widgets.length == 0);
+			if (widgetManager.widgets.length == 0) {
+				importSave();
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loaded]);
@@ -116,12 +126,12 @@ export default function App() {
 							onClose={() => setOnboardingIsOpen(false)}
 							locale={locale ?? "en"} setLocale={setLocale}
 							manager={widgetManager} />)}
-					<ReviewRequester />
+					{/* <ReviewRequester /> */}
 
 					{isLocked && !onboardingIsOpen && (
 						<Button id="unlock-widgets" onClick={() => setIsLocked(false)}
 							tabIndex={0} variant={ButtonVariant.None}
-							className="text-shadow" icon="fas fa-pen"
+							className="text-shadow" icon="fas fa-ellipsis-h"
 							title={messages.unlockWidgets} />)}
 
 					{!isLocked && (
